@@ -1,0 +1,9 @@
+node_modules/
+.vercel/
+*.bak
+*.backup
+*.bak-*
+dep-result.txt
+deploy-result.txt
+dr.txt
+.DS_Store
