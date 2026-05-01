@@ -1,114 +1,638 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HoneyBadger AI — Voice Agents That Never Give Up</title>
     <link rel="icon" type="image/png" href="honeybadger-logo.png">
-    <meta name="description" content="AI voice agents for every industry. 24/7 call answering, lead qualification, appointment booking.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="AI voice agents for every industry. 24/7 call answering, lead qualification, appointment booking.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg:#000; --bg-card:#0a0a0a; --accent:#fff; --accent-light:#e0e0e0; --accent-glow:rgba(255,255,255,0.15); --text:#fff; --text-sec:#FFFFFF; --text-muted:#666; --border:rgba(255,255,255,0.08); }
-        html { scroll-behavior: smooth; }
-        body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
-        .stars { position:fixed; inset:0; background-image:radial-gradient(1px 1px at 20px 30px,rgba(255,255,255,0.4),transparent),radial-gradient(1px 1px at 40px 70px,rgba(255,255,255,0.3),transparent),radial-gradient(1px 1px at 50px 160px,rgba(255,255,255,0.3),transparent),radial-gradient(1px 1px at 90px 40px,rgba(255,255,255,0.4),transparent); background-size:200px 200px; animation:twinkle 5s infinite; pointer-events:none; z-index:0; }
-        @keyframes twinkle { 0%,100%{opacity:0.6} 50%{opacity:1} }
-        .glow { position:fixed; top:-50%; left:50%; transform:translateX(-50%); width:100%; height:100%; background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(255,255,255,0.04),transparent); pointer-events:none; z-index:0; }
-        nav { position:fixed; top:0; left:0; right:0; padding:20px 48px; display:flex; justify-content:space-between; align-items:center; z-index:100; background:rgba(0,0,0,0.6); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
-        .logo { display:flex; align-items:center; gap:12px; cursor:pointer; }
-        .nav-links { display:flex; gap:40px; }
-        .nav-links a { color:var(--text-sec); text-decoration:none; font-size:14px; font-weight:500; transition:color 0.2s; }
-        .nav-links a:hover { color:var(--text); }
-        .hero { position:relative; z-index:1; padding:200px 48px 120px; text-align:center; }
-        .hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--bg-card); border:1px solid var(--border); padding:8px 16px; border-radius:100px; font-size:12px; font-weight:500; color:var(--text-sec); margin-bottom:40px; text-transform:uppercase; letter-spacing:1px; }
-        .hero-badge .pulse { width:6px; height:6px; background:#22c55e; border-radius:50%; animation:pulse 2s infinite; }
-        @keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,0.4)} 50%{opacity:0.8;box-shadow:0 0 0 8px rgba(34,197,94,0)} }
-        .hero h1 { font-size:clamp(48px,8vw,80px); font-weight:900; letter-spacing:-3px; line-height:1; margin-bottom:24px; }
-        .hero h1 .accent { background:linear-gradient(135deg,#fff,#e0e0e0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .hero-sub { font-size:clamp(16px,2vw,20px); color:var(--text-sec); max-width:640px; margin:0 auto 48px; line-height:1.7; }
-        .hero-cta { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
-        .btn { display:inline-flex; align-items:center; gap:8px; padding:16px 32px; border-radius:10px; font-weight:600; font-size:14px; text-decoration:none; transition:all 0.2s; }
-        .btn-primary { background:var(--accent); color:#000; box-shadow:0 4px 20px var(--accent-glow); }
-        .btn-primary:hover { background:var(--accent-light); transform:translateY(-2px); }
-        .btn-secondary { background:transparent; color:var(--text); border:1px solid var(--border); }
-        .btn-secondary:hover { background:var(--bg-card); border-color:var(--accent); }
-        .stats { display:flex; justify-content:center; gap:80px; padding:60px 48px; border-top:1px solid var(--border); border-bottom:1px solid var(--border); position:relative; z-index:1; flex-wrap:wrap; }
-        .stat { text-align:center; }
-        .stat-value { font-size:36px; font-weight:800; color:#fff; }
-        .stat-label { font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
-        .pricing { position:relative; z-index:1; padding:100px 48px; }
-        .section-header { text-align:center; margin-bottom:64px; }
-        .section-header h2 { font-size:clamp(32px,5vw,48px); font-weight:800; letter-spacing:-2px; margin-bottom:12px; }
-        .section-header p { color:var(--text-sec); font-size:16px; }
-        .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; max-width:1100px; margin:0 auto; }
-        .pricing-card { background:var(--bg-card); border:1px solid var(--border); border-radius:20px; padding:40px; position:relative; transition:all 0.3s; }
-        .pricing-card:hover { border-color:#fff; transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,0.3); }
-        .pricing-card.featured { border-color:var(--accent); background:linear-gradient(180deg,rgba(244,166,35,0.05),var(--bg-card)); }
-        .pricing-card.featured::before { content:"MOST POPULAR"; position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--accent); color:#000; padding:6px 20px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:1px; }
-        .pricing-tier { font-size:24px; font-weight:800; margin-bottom:8px; }
-        .pricing-price { font-size:14px; color:var(--text-sec); margin-bottom:24px; }
-        .pricing-price strong { font-size:32px; color:var(--text); }
-        .pricing-features { list-style:none; margin-bottom:32px; }
-        .pricing-features li { padding:12px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--text-sec); display:flex; align-items:center; gap:10px; }
-        .pricing-features li:last-child { border-bottom:none; }
-        .pricing-features .check { color:var(--accent); font-weight:bold; }
-        .pricing-cta { display:block; background:var(--accent); color:#000; padding:14px; border-radius:10px; text-align:center; text-decoration:none; font-weight:700; font-size:14px; transition:all 0.2s; }
-        .pricing-cta:hover { background:var(--accent-light); }
-        .pricing-cta.outline { background:transparent; border:1px solid var(--border); color:var(--text); }
-        .pricing-cta.outline:hover { border-color:var(--accent); }
-        .demos { position:relative; z-index:1; padding:100px 48px; background:var(--bg-card); }
-        .demo-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; max-width:1200px; margin:0 auto; }
-        .demo-card { background:var(--bg); border:1px solid var(--border); border-radius:16px; padding:28px; text-decoration:none; color:inherit; transition:all 0.3s; display:block; }
-        .demo-card:hover { border-color:var(--accent); transform:translateY(-4px); }
-        .demo-card-large { background:var(--bg); border:1px solid var(--border); border-radius:20px; padding:48px; text-align:center; min-width:320px; transition:all 0.3s; }
-        .demo-card-large:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,0.3); }
-        .demo-icon-large { font-size:64px; margin-bottom:20px; }
-        .sample-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1000px; margin:0 auto; }
-        .sample-card { background:var(--bg-card); border:1px solid var(--border); border-radius:16px; padding:40px 24px; text-align:center; transition:all 0.3s; }
-        .sample-card:hover { border-color:var(--accent); transform:translateY(-4px); }
-        .sample-icon { font-size:48px; margin-bottom:16px; }
-        .sample-card h3 { font-size:18px; font-weight:700; }
-        @media (max-width:900px) { .sample-grid{grid-template-columns:repeat(2,1fr)} }
-        @media (max-width:600px) { .sample-grid{grid-template-columns:1fr} .demo-card-large{min-width:100%} }
-        .demo-icon { width:50px; height:50px; background:var(--accent-glow); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:16px; }
-        .demo-title { font-size:20px; font-weight:700; margin-bottom:8px; }
-        .demo-desc { color:var(--text-sec); font-size:14px; margin-bottom:16px; }
-        .demo-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
-        .demo-tag { background:rgba(255,255,255,0.04); color:var(--text-muted); padding:5px 10px; border-radius:6px; font-size:11px; }
-        .demo-cta { color:var(--accent); font-weight:600; font-size:13px; display:flex; align-items:center; gap:5px; }
-        .demo-cta span { transition:transform 0.2s; }
-        .demo-card:hover .demo-cta span { transform:translateX(4px); }
-        footer { position:relative; z-index:1; padding:48px; border-top:1px solid var(--border); text-align:center; }
-        .footer-text { color:var(--text-muted); font-size:13px; }
-        @media (max-width:768px) { nav{padding:16px 24px} .nav-links{display:none} .hero{padding:140px 24px 80px} .stats{gap:40px;padding:40px 24px} .pricing,.demos{padding:60px 24px} .pricing-grid,.demo-grid{grid-template-columns:1fr} }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #000;
+            --bg-card: #0a0a0a;
+            --accent: #fff;
+            --accent-light: #e0e0e0;
+            --accent-glow: rgba(255, 255, 255, 0.15);
+            --text: #fff;
+            --text-sec: #FFFFFF;
+            --text-muted: #666;
+            --border: rgba(255, 255, 255, 0.08);
+            --phone-green: #22c55e;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.4), transparent), radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.3), transparent), radial-gradient(1px 1px at 50px 160px, rgba(255, 255, 255, 0.3), transparent), radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.4), transparent);
+            background-size: 200px 200px;
+            animation: twinkle 5s infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.6
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+        .glow {
+            position: fixed;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255, 255, 255, 0.04), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--text-sec);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            padding: 200px 48px 120px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-sec);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-badge .pulse {
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4)
+            }
+
+            50% {
+                opacity: 0.8;
+                box-shadow: 0 0 0 8px rgba(34, 197, 94, 0)
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 900;
+            letter-spacing: -3px;
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .accent {
+            background: linear-gradient(135deg, #fff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-sub {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-sec);
+            max-width: 640px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card);
+            border-color: var(--accent);
+        }
+
+        .icon-phone {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: var(--phone-green);
+            flex-shrink: 0;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            padding: 60px 48px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .pricing {
+            position: relative;
+            z-index: 1;
+            padding: 100px 48px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-sec);
+            font-size: 16px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: #fff;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(180deg, rgba(244, 166, 35, 0.05), var(--bg-card));
+        }
+
+        .pricing-card.featured::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: #000;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .pricing-tier {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            font-size: 14px;
+            color: var(--text-sec);
+            margin-bottom: 24px;
+        }
+
+        .pricing-price strong {
+            font-size: 32px;
+            color: var(--text);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            color: var(--text-sec);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features .check {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .pricing-cta {
+            display: block;
+            background: var(--accent);
+            color: #000;
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .pricing-cta:hover {
+            background: var(--accent-light);
+        }
+
+        .pricing-cta.outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .pricing-cta.outline:hover {
+            border-color: var(--accent);
+        }
+
+        .demos {
+            position: relative;
+            z-index: 1;
+            padding: 100px 48px;
+            background: var(--bg-card);
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .demo-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .demo-card-large {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+            min-width: 320px;
+            transition: all 0.3s;
+        }
+
+        .demo-card-large:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .demo-icon-large {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .sample-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .sample-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .sample-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .sample-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .sample-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        @media (max-width:900px) {
+            .sample-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media (max-width:600px) {
+            .sample-grid {
+                grid-template-columns: 1fr
+            }
+
+            .demo-card-large {
+                min-width: 100%
+            }
+        }
+
+        .demo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-glow);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .demo-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .demo-desc {
+            color: var(--text-sec);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .demo-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .demo-tag {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-muted);
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+        }
+
+        .demo-cta {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .demo-cta span {
+            transition: transform 0.2s;
+        }
+
+        .demo-card:hover .demo-cta span {
+            transform: translateX(4px);
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            padding: 48px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        @media (max-width:768px) {
+            nav {
+                padding: 16px 24px
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .hero {
+                padding: 140px 24px 80px
+            }
+
+            .stats {
+                gap: 40px;
+                padding: 40px 24px
+            }
+
+            .pricing,
+            .demos {
+                padding: 60px 24px
+            }
+
+            .pricing-grid,
+            .demo-grid {
+                grid-template-columns: 1fr
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="stars"></div>
     <div class="glow"></div>
     <nav>
         <a href="#top" class="logo" style="text-decoration:none;">
-            <img src="honeybadger-logo.png" alt="HoneyBadger AI" style="height:40px;width:auto;background:#fff;padding:4px 8px;border-radius:8px;">
+            <img src="honeybadger-logo.png" alt="HoneyBadger AI"
+                style="height:40px;width:auto;background:#fff;padding:4px 8px;border-radius:8px;">
         </a>
-        <div class="nav-links"><a href="#pricing">Pricing</a><a href="#demos">Demos</a><a href="#contact">Contact</a></div>
+        <div class="nav-links"><a href="#pricing">Pricing</a><a href="#demos">Demos</a><a href="#contact">Contact</a>
+        </div>
     </nav>
     <span id="top"></span>
     <section class="hero">
         <h1 style="font-size:clamp(52px,10vw,96px);font-weight:900;letter-spacing:-2px;margin-bottom:8px;">Alice</h1>
-        <p style="font-size:clamp(14px,1.5vw,18px);color:#FFFFFF;text-transform:uppercase;letter-spacing:3px;margin-bottom:24px;">Advanced Language Interaction & Conversational Experience</p>
-        <p class="hero-sub" style="font-size:clamp(16px,2vw,20px);max-width:640px;">Answer every call. Qualify every lead. Book every appointment.<br>24 HOURS A DAY, 7 DAYS A WEEK.</p>
+        <p
+            style="font-size:clamp(14px,1.5vw,18px);color:#FFFFFF;text-transform:uppercase;letter-spacing:3px;margin-bottom:24px;">
+            Advanced Language Interaction & Conversational Experience</p>
+        <p class="hero-sub" style="font-size:clamp(16px,2vw,20px);max-width:640px;">Answer every call. Qualify every
+            lead. Book every appointment.<br>24 HOURS A DAY, 7 DAYS A WEEK.</p>
         <div class="hero-cta">
             <a href="#demos" class="btn btn-primary">Try a Demo →</a>
             <a href="#pricing" class="btn btn-secondary">View Pricing</a>
         </div>
     </section>
     <div class="stats">
-        <div class="stat"><div class="stat-value">24/7</div><div class="stat-label">Availability</div></div>
-        <div class="stat"><div class="stat-value">&lt;2s</div><div class="stat-label">Answer Time</div></div>
+        <div class="stat">
+            <div class="stat-value">24/7</div>
+            <div class="stat-label">Availability</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">&lt;2s</div>
+            <div class="stat-label">Answer Time</div>
+        </div>
     </div>
     <section class="pricing" id="pricing">
-        <div class="section-header"><h2>Simple Pricing</h2><p>Choose the plan that fits your needs</p></div>
+        <div class="section-header">
+            <h2>Simple Pricing</h2>
+            <p>Choose the plan that fits your needs</p>
+        </div>
         <div class="pricing-grid">
             <div class="pricing-card">
                 <div class="pricing-tier">Core</div>
@@ -143,28 +667,44 @@
         </div>
     </section>
     <section class="demos" id="demos">
-        <div class="section-header"><h2>Try a Demo</h2></div>
+        <div class="section-header">
+            <h2>Try a Demo</h2>
+        </div>
         <div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;max-width:900px;margin:0 auto;">
             <div class="demo-card-large">
                 <div class="demo-icon-large">⚡</div>
                 <h3 style="font-size:28px;font-weight:700;margin-bottom:24px;">EV Charging</h3>
                 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                    <button onclick="startCall('ev')" id="btn-ev" class="btn btn-primary" style="cursor:pointer;border:none;font-size:inherit;font-family:inherit;">🌐 Web</button>
-                    <a href="tel:877-836-0242" class="btn btn-secondary" style="text-decoration:none;">📞 Phone</a>
+                    <button onclick="startCall('ev')" id="btn-ev" class="btn btn-primary"
+                        style="cursor:pointer;border:none;font-size:inherit;font-family:inherit;">🌐 Web</button>
+                    <a href="tel:877-836-0242" class="btn btn-secondary" style="text-decoration:none;"><svg
+                            class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z" />
+                        </svg> Phone</a>
                 </div>
             </div>
             <div class="demo-card-large">
                 <div class="demo-icon-large">₿</div>
                 <h3 style="font-size:28px;font-weight:700;margin-bottom:24px;">Crypto ATMs</h3>
                 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                    <button onclick="startCall('crypto')" id="btn-crypto" class="btn btn-primary" style="cursor:pointer;border:none;font-size:inherit;font-family:inherit;">🌐 Web</button>
-                    <a href="tel:778-800-3777" class="btn btn-secondary" style="text-decoration:none;">📞 Phone</a>
+                    <button onclick="startCall('crypto')" id="btn-crypto" class="btn btn-primary"
+                        style="cursor:pointer;border:none;font-size:inherit;font-family:inherit;">🌐 Web</button>
+                    <a href="tel:778-800-3777" class="btn btn-secondary" style="text-decoration:none;"><svg
+                            class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z" />
+                        </svg> Phone</a>
                 </div>
             </div>
         </div>
     </section>
     <section class="samples" id="samples" style="position:relative;z-index:1;padding:80px 48px;">
-        <div class="section-header"><h2>Sample Calls in Your Industry</h2></div>
+        <div class="section-header">
+            <h2>Sample Calls in Your Industry</h2>
+        </div>
         <div class="sample-grid">
             <div class="sample-card">
                 <div class="sample-icon">🦷</div>
@@ -224,104 +764,107 @@
         </div>
     </section>
 
-    <section id="contact" style="position:relative;z-index:1;padding:60px 20px;text-align:center;background:rgba(255,255,255,0.02);">
+    <section id="contact"
+        style="position:relative;z-index:1;padding:60px 20px;text-align:center;background:rgba(255,255,255,0.02);">
         <h2>Get Started</h2>
         <div style="margin:20px 0;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
             <a href="tel:236-480-0827" class="btn btn-primary" style="text-decoration:none;">📞 236-480-0827</a>
-            <a href="mailto:info@badgerlabs.ai" class="btn btn-secondary" style="text-decoration:none;">✉️ info@badgerlabs.ai</a>
+            <a href="mailto:info@badgerlabs.ai" class="btn btn-secondary" style="text-decoration:none;">✉️
+                info@badgerlabs.ai</a>
         </div>
     </section>
     <footer>
         <p class="footer-text">© 2026 HoneyBadger AI. All rights reserved.</p>
     </footer>
 
-<!-- Retell Web Call SDK via CDN -->
-<script type="module">
-    import { RetellWebClient } from 'https://esm.sh/retell-client-js-sdk@2.0.7';
+    <!-- Retell Web Call SDK via CDN -->
+    <script type="module">
+        import { RetellWebClient } from 'https://esm.sh/retell-client-js-sdk@2.0.7';
 
-    const client = new RetellWebClient();
-    let activeDemo = null;
+        const client = new RetellWebClient();
+        let activeDemo = null;
 
-    client.on("call_started", () => {
-        console.log("Call started");
-    });
-
-    client.on("call_ended", () => {
-        console.log("Call ended");
-        activeDemo = null;
-        resetButtons();
-    });
-
-    client.on("error", (err) => {
-        console.error("Call error:", err);
-        activeDemo = null;
-        resetButtons();
-    });
-
-    window.startCall = async function(demo) {
-        const btn = document.getElementById("btn-" + demo);
-
-        if (activeDemo === demo) {
-            client.stopCall();
-            activeDemo = null;
-            resetButtons();
-            return;
-        }
-
-        if (activeDemo) {
-            client.stopCall();
-        }
-
-        try {
-            btn.textContent = "🔄 Connecting...";
-            btn.disabled = true;
-            activeDemo = demo;
-
-            const res = await fetch("/api/create-call", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ demo }),
-            });
-
-            const data = await res.json();
-            if (!res.ok) throw new Error(data.error || "Failed to create call");
-
-            await client.startCall({
-                callId: data.call_id,
-                accessToken: data.access_token,
-            });
-
-            btn.textContent = "🔴 End Call";
-            btn.disabled = false;
-            btn.style.background = "#e53935";
-
-        } catch (err) {
-            console.error("Failed to start call:", err);
-            alert("Could not start call. Please try again.");
-            activeDemo = null;
-            resetButtons();
-        }
-    };
-
-    function resetButtons() {
-        ["ev", "crypto"].forEach((demo) => {
-            const btn = document.getElementById("btn-" + demo);
-            if (btn) {
-                btn.textContent = "🌐 Web";
-                btn.disabled = false;
-                btn.style.background = "";
-            }
+        client.on("call_started", () => {
+            console.log("Call started");
         });
-    }
-</script>
-<!-- Cal floating-popup embed code begins -->
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "intro-call", {origin:"https://app.cal.com"});
 
-  Cal.ns["intro-call"]("floatingButton", {"calLink":"badgerlabsai/intro-call","config":{"layout":"week_view","useSlotsViewOnSmallScreen":"true"},"buttonColor":"#FFFFFF","buttonTextColor":"#000000","buttonText":"Book a Demo"});
-  Cal.ns["intro-call"]("ui", {"hideEventTypeDetails":false,"layout":"week_view"});
-  </script>
-  <!-- Cal floating-popup embed code ends -->
+        client.on("call_ended", () => {
+            console.log("Call ended");
+            activeDemo = null;
+            resetButtons();
+        });
+
+        client.on("error", (err) => {
+            console.error("Call error:", err);
+            activeDemo = null;
+            resetButtons();
+        });
+
+        window.startCall = async function (demo) {
+            const btn = document.getElementById("btn-" + demo);
+
+            if (activeDemo === demo) {
+                client.stopCall();
+                activeDemo = null;
+                resetButtons();
+                return;
+            }
+
+            if (activeDemo) {
+                client.stopCall();
+            }
+
+            try {
+                btn.textContent = "🔄 Connecting...";
+                btn.disabled = true;
+                activeDemo = demo;
+
+                const res = await fetch("/api/create-call", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ demo }),
+                });
+
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || "Failed to create call");
+
+                await client.startCall({
+                    callId: data.call_id,
+                    accessToken: data.access_token,
+                });
+
+                btn.textContent = "🔴 End Call";
+                btn.disabled = false;
+                btn.style.background = "#e53935";
+
+            } catch (err) {
+                console.error("Failed to start call:", err);
+                alert("Could not start call. Please try again.");
+                activeDemo = null;
+                resetButtons();
+            }
+        };
+
+        function resetButtons() {
+            ["ev", "crypto"].forEach((demo) => {
+                const btn = document.getElementById("btn-" + demo);
+                if (btn) {
+                    btn.textContent = "🌐 Web";
+                    btn.disabled = false;
+                    btn.style.background = "";
+                }
+            });
+        }
+    </script>
+    <!-- Cal floating-popup embed code begins -->
+    <script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "intro-call", { origin: "https://app.cal.com" });
+
+        Cal.ns["intro-call"]("floatingButton", { "calLink": "badgerlabsai/intro-call", "config": { "layout": "week_view", "useSlotsViewOnSmallScreen": "true" }, "buttonColor": "#FFFFFF", "buttonTextColor": "#000000", "buttonText": "Book a Demo" });
+        Cal.ns["intro-call"]("ui", { "hideEventTypeDetails": false, "layout": "week_view" });
+    </script>
+    <!-- Cal floating-popup embed code ends -->
 </body>
+
 </html>
