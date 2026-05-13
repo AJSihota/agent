@@ -13,7 +13,7 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
   const AGENTS = {
-    ev: { agentId: 'agent_33f25d98f5585f1a4089ac7c46', apiKey: 'PASTE_EV_KEY_HERE' },
+    ev: { agentId: 'agent_4c3c77a23da1f82720dd7b964a', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
     crypto: { agentId: 'agent_51ec9174c41daa9b8687e6095a', apiKey: 'key_b0daa84fdd89fd57a8b3a2d62722' },
     hvac: { agentId: 'agent_5bfd40867f73fb1c2337c01185', apiKey: 'key_b0daa84fdd89fd57a8b3a2d62722' },
   };
