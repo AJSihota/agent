@@ -3,9 +3,9 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
   const AGENTS = {
-    ev: { agentId: 'agent_33f25d98f5585f1a4089ac7c46', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
-    crypto: { agentId: 'agent_51ec9174c41daa9b8687e6095a', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
-    hvac: { agentId: 'agent_5bfd40867f73fb1c2337c01185', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
+    ev: { agentId: process.env.RETELL_AGENT_EV, apiKey: process.env.RETELL_API_KEY },
+    crypto: { agentId: process.env.RETELL_AGENT_CRYPTO, apiKey: process.env.RETELL_API_KEY },
+    hvac: { agentId: process.env.RETELL_AGENT_HVAC, apiKey: process.env.RETELL_API_KEY },
   };
   const demo = (req.body && req.body.demo) || 'hvac';
   const config = AGENTS[demo] || AGENTS.hvac;
@@ -20,10 +20,10 @@ module.exports = async function handler(req, res) {
     });
     const data = await response.json();
     if (!response.ok) {
-      return res.status(response.status).json({ error: 'Retell API error', details: data });
+      return res.status(response.status).json({ error: 'Failed to create call' });
     }
     res.status(200).json(data);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
