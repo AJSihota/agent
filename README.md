@@ -18,8 +18,9 @@ BadgerLabs AI is an AI voice agent platform targeting service businesses in Brit
 
 ### Vercel (Recommended)
 
+Before deploying, add your secrets as environment variables in the Vercel project dashboard under **Settings → Environment Variables**. See `.env.example` for the full list of required variables. Never commit actual keys to the repository.
+
 ```bash
-cd /data/.openclaw/workspace/badgerlabs-ai
 vercel --prod
 ```
 
