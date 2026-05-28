@@ -6,6 +6,7 @@ module.exports = async function handler(req, res) {
     ev: { agentId: 'agent_33f25d98f5585f1a4089ac7c46', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
     crypto: { agentId: 'agent_51ec9174c41daa9b8687e6095a', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
     hvac: { agentId: 'agent_5bfd40867f73fb1c2337c01185', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
+    alice: { agentId: 'agent_38fa4616fd620f15f25d6880ee', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
   };
   const demo = (req.body && req.body.demo) || 'hvac';
   const config = AGENTS[demo] || AGENTS.hvac;

@@ -441,6 +441,92 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
+        .alice-card {
+            background: linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 24px;
+            padding: 56px 48px;
+            text-align: center;
+            max-width: 480px;
+            margin: 0 auto;
+            transition: all 0.3s;
+            box-shadow: 0 0 40px rgba(255,255,255,0.04);
+        }
+
+        .alice-card:hover {
+            border-color: rgba(255,255,255,0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 60px rgba(255,255,255,0.06);
+        }
+
+        .alice-avatar {
+            font-size: 72px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .alice-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #22c55e;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
+        }
+
+        .alice-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
+        }
+
+        .alice-card h3 {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .alice-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .alice-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-alice {
+            background: #fff;
+            color: #000;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 14px 28px;
+            box-shadow: 0 4px 24px rgba(255,255,255,0.2);
+        }
+
+        .btn-alice:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(255,255,255,0.25);
+        }
+
         .demo-icon-large {
             font-size: 64px;
             margin-bottom: 20px;
@@ -765,11 +851,32 @@
     </section>
 
     <section id="contact"
-        style="position:relative;z-index:1;padding:60px 20px;text-align:center;background:rgba(255,255,255,0.02);">
+        style="position:relative;z-index:1;padding:80px 20px;text-align:center;background:rgba(255,255,255,0.02);">
         <h2>Get Started</h2>
-        <div style="margin:20px 0;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
-            <a href="tel:236-480-0827" class="btn btn-primary" style="text-decoration:none;"><svg class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z"/></svg> 236-480-0827</a>            <a href="mailto:info@badgerlabs.ai" class="btn btn-secondary" style="text-decoration:none;">✉️
-                info@badgerlabs.ai</a>
+        <p style="color:var(--text-muted);margin:12px 0 40px;font-size:17px;">Talk to Alice — our AI receptionist is ready right now</p>
+        <div class="alice-card">
+            <span class="alice-avatar">🎙️</span>
+            <div class="alice-status">
+                <span class="alice-status-dot"></span>
+                Online · Available 24/7
+            </div>
+            <h3>Meet Alice</h3>
+            <p>Answer questions, qualify leads, and book appointments — instantly, any time of day.</p>
+            <div class="alice-actions">
+                <button onclick="startCall('alice')" id="btn-alice" class="btn btn-alice"
+                    style="cursor:pointer;border:none;font-size:inherit;font-family:inherit;">
+                    🌐 Web Call
+                </button>
+                <a href="tel:+18776770755" class="btn btn-secondary" style="text-decoration:none;">
+                    <svg class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z"/>
+                    </svg>
+                    +1 (877) 677-0755
+                </a>
+            </div>
+        </div>
+        <div style="margin-top:28px;">
+            <a href="mailto:info@badgerlabs.ai" class="btn btn-secondary" style="text-decoration:none;">✉️ info@badgerlabs.ai</a>
         </div>
     </section>
     <footer>
@@ -853,6 +960,12 @@
                     btn.style.background = "";
                 }
             });
+            const aliceBtn = document.getElementById("btn-alice");
+            if (aliceBtn) {
+                aliceBtn.textContent = "🌐 Web Call";
+                aliceBtn.disabled = false;
+                aliceBtn.style.background = "";
+            }
         }
     </script>
     <!-- Cal floating-popup embed code begins -->
