@@ -4,7 +4,7 @@ module.exports = async function handler(req, res) {
   }
   const AGENTS = {
     ev: { agentId: 'agent_33f25d98f5585f1a4089ac7c46', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
-    crypto: { agentId: 'agent_56ccac9d6a6ae0b6ed92c0ffe1', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
+    crypto: { agentId: 'agent_56ccac9d6a6ae0b6ed92c0ffe1', apiKey: 'key_c5bb6259da114f3f7d5665a0768b' },
     hvac: { agentId: 'agent_5bfd40867f73fb1c2337c01185', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
     alice: { agentId: 'agent_38fa4616fd620f15f25d6880ee', apiKey: 'key_c5bb6259da114f3f7d5665a0768b' },
   };
