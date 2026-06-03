@@ -14,7 +14,7 @@ module.exports = async function handler(req, res) {
   }
   const AGENTS = {
     ev: { agentId: 'agent_4c3c77a23da1f82720dd7b964a', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
-    crypto: { agentId: 'agent_51ec9174c41daa9b8687e6095a', apiKey: 'key_b0daa84fdd89fd57a8b3a2d62722' },
+    crypto: { agentId: 'agent_56ccac9d6a6ae0b6ed92c0ffe1', apiKey: 'key_b0daa84fdd89fd57a8b3a2d62722' },
     hvac: { agentId: 'agent_5bfd40867f73fb1c2337c01185', apiKey: 'key_b0daa84fdd89fd57a8b3a2d62722' },
   };
   const demo = (req.body && req.body.demo) || 'hvac';
