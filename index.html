@@ -306,26 +306,6 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .pricing-card.featured {
-            border-color: var(--accent);
-            background: linear-gradient(180deg, rgba(244, 166, 35, 0.05), var(--bg-card));
-        }
-
-        .pricing-card.featured::before {
-            content: "MOST POPULAR";
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: #000;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
         .pricing-tier {
             font-size: 24px;
             font-weight: 800;
@@ -722,20 +702,20 @@
         <div class="pricing-grid">
             <div class="pricing-card">
                 <div class="pricing-tier">Core</div>
-                <div class="pricing-price"><strong>$12</strong>/hour of talk time</div>
-                <ul class="pricing-features">
-                    <li><span class="check">✓</span> Self-service setup</li>
-                    <li><span class="check">✓</span> AI onboarding assistant</li>
-                    <li><span class="check">✓</span> Basic support</li>
-                    <li><span class="check">✓</span> Pay as you go</li>
-                </ul>
-            </div>
-            <div class="pricing-card featured">
-                <div class="pricing-tier">Pro</div>
-                <div class="pricing-price"><strong>$500</strong>/month minimum • $15/hr over 20hrs</div>
+                <div class="pricing-price"><strong>$200</strong>/month • $15/hour over 8hrs</div>
                 <ul class="pricing-features">
                     <li><span class="check">✓</span> No onboarding cost</li>
-                    <li><span class="check">✓</span> 5 hours hands-on onboarding</li>
+                    <li><span class="check">✓</span> 2 hours of hands-on onboarding</li>
+                    <li><span class="check">✓</span> Basic support</li>
+                    <li><span class="check">✓</span> 8 hours included monthly</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <div class="pricing-tier">Pro</div>
+                <div class="pricing-price"><strong>$500</strong>/month minimum • $15/hour over 20hrs</div>
+                <ul class="pricing-features">
+                    <li><span class="check">✓</span> No onboarding cost</li>
+                    <li><span class="check">✓</span> 5 hours hands-on human onboarding</li>
                     <li><span class="check">✓</span> Priority support</li>
                     <li><span class="check">✓</span> 20 hours included monthly</li>
                 </ul>
@@ -746,8 +726,8 @@
                 <ul class="pricing-features">
                     <li><span class="check">✓</span> Unlimited onboarding time</li>
                     <li><span class="check">✓</span> Knowledge base setup</li>
-                    <li><span class="check">✓</span> Ongoing performance tweaks</li>
                     <li><span class="check">✓</span> Dedicated support</li>
+                    <li><span class="check">✓</span> Ongoing performance tweaks</li>
                 </ul>
             </div>
         </div>
