@@ -8,6 +8,18 @@
   <link rel="cms-config-url" type="text/yaml" href="/admin/config.yml">
 </head>
 <body>
+  <script>
+    // BroadcastChannel listener: receives the OAuth token from the callback
+    // popup (which can't use window.opener due to GitHub's COOP header) and
+    // re-dispatches it as a window.postMessage so Decap CMS picks it up normally.
+    try {
+      var oauthChannel = new BroadcastChannel('decap-cms-oauth');
+      oauthChannel.onmessage = function (e) {
+        window.postMessage(e.data, window.location.origin);
+        oauthChannel.close();
+      };
+    } catch (e) {}
+  </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
