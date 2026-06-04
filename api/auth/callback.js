@@ -30,15 +30,16 @@ module.exports = async function handler(req, res) {
 };
 
 function renderPopup(status, content) {
-  // Decap CMS listens for this exact postMessage format from the OAuth popup window
   const message = `authorization:github:${status}:${content}`;
+  // Post directly to the opener and close — avoids depending on the
+  // two-step handshake which breaks when GitHub's COOP header nulls window.opener.
   return `<!DOCTYPE html><html><body><script>
     (function () {
-      function onMessage(e) {
-        window.opener.postMessage(${JSON.stringify(message)}, e.origin);
+      var msg = ${JSON.stringify(message)};
+      if (window.opener && !window.opener.closed) {
+        window.opener.postMessage(msg, '*');
       }
-      window.addEventListener('message', onMessage, false);
-      window.opener.postMessage('authorizing:github', '*');
+      window.close();
     })();
   </script></body></html>`;
 }
