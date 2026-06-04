@@ -2,68 +2,53 @@
   "hero": {
     "title": "Alice",
     "subtitle": "Advanced Language Interaction & Conversational Experience",
-    "description": "Answer every call, qualify every lead, and book every appointment.\n24 HOURS A DAY, 7 DAYS A WEEK.",
+    "description": "Answer every call. Qualify every lead. Book every appointment.\n24 HOURS A DAY, 7 DAYS A WEEK.",
     "cta_primary_text": "Try a Demo →",
     "cta_secondary_text": "View Pricing"
   },
-  "stats": [
-    { "value": "24/7", "label": "Availability" },
-    { "value": "<2s", "label": "Answer Time" },
-    { "value": "80%+", "label": "Capture Rate" },
-    { "value": "3 Days", "label": "Setup Time" }
-  ],
   "pricing": {
     "heading": "Simple Pricing",
     "subheading": "Choose the plan that fits your needs",
     "tiers": [
       {
         "name": "Core",
-        "price": "$12",
-        "price_unit": "/hour of talk time",
-        "features": ["Self-service setup", "AI onboarding assistant", "Basic support", "Pay as you go"],
-        "cta_text": "Get Started",
-        "featured": false
+        "price": "$200",
+        "price_unit": "/month • $15/hour over 8hrs",
+        "features": [
+          "No onboarding cost",
+          "2 hours of hands-on onboarding",
+          "Basic support",
+          "8 hours included monthly"
+        ]
       },
       {
         "name": "Pro",
         "price": "$500",
-        "price_unit": "/month minimum • $15/hr over 20hrs",
-        "features": ["No onboarding cost", "5 hours hands-on onboarding", "Priority support", "20 hours included monthly"],
-        "cta_text": "Get Started",
-        "featured": true
+        "price_unit": "/month minimum • $15/hour over 20hrs",
+        "features": [
+          "No onboarding cost",
+          "5 hours hands-on human onboarding",
+          "Priority support",
+          "20 hours included monthly"
+        ]
       },
       {
         "name": "Elite",
         "price": "$2,000",
-        "price_unit": "setup • $500/mo • $15/hr over 20hrs",
-        "features": ["Unlimited onboarding time", "Knowledge base setup", "Ongoing performance tweaks", "Dedicated support"],
-        "cta_text": "Get Started",
-        "featured": false
+        "price_unit": " setup • $500/mo • $15/hr over 20hrs",
+        "features": [
+          "Unlimited onboarding time",
+          "Knowledge base setup",
+          "Dedicated support",
+          "Ongoing performance tweaks"
+        ]
       }
     ]
   },
-  "demos": [
-    {
-      "icon": "⚡",
-      "title": "EV Charging",
-      "phone": "778-654-8322",
-      "cta_text": "📞 Call Now"
-    },
-    {
-      "icon": "₿",
-      "title": "Crypto ATMs",
-      "phone": "778-800-3777",
-      "cta_text": "📞 Call Now"
-    }
-  ],
-  "sample_calls": [
-    { "icon": "🦷", "title": "Dental", "file": "dental-demo.mp4" },
-    { "icon": "⚖️", "title": "Legal", "file": "legal-demo.mp4" },
-    { "icon": "❄️", "title": "HVAC", "file": "hvac-demo.mp4" },
-    { "icon": "🚗", "title": "Automotive", "file": "automotive-demo.mp4" },
-    { "icon": "🔧", "title": "Plumbing", "file": "plumbing-demo.mp4" }
-  ],
   "contact": {
+    "headline": "Talk to Alice, our HoneyBadger AI Receptionist",
+    "subheadline": "Get answers about our AI solutions, qualify your project, or schedule a demo call — instantly, 24/7.",
+    "card_title": "How Can Alice Help?",
     "email": "info@badgerlabs.ai",
     "phone": "877-677-0755"
   },

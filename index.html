@@ -673,15 +673,15 @@
     </nav>
     <span id="top"></span>
     <section class="hero">
-        <h1 style="font-size:clamp(52px,10vw,96px);font-weight:900;letter-spacing:-2px;margin-bottom:8px;">Alice</h1>
-        <p
+        <h1 id="hero-title" style="font-size:clamp(52px,10vw,96px);font-weight:900;letter-spacing:-2px;margin-bottom:8px;">Alice</h1>
+        <p id="hero-subtitle"
             style="font-size:clamp(14px,1.5vw,18px);color:#FFFFFF;text-transform:uppercase;letter-spacing:3px;margin-bottom:24px;">
             Advanced Language Interaction & Conversational Experience</p>
-        <p class="hero-sub" style="font-size:clamp(16px,2vw,20px);max-width:640px;">Answer every call. Qualify every
+        <p id="hero-description" class="hero-sub" style="font-size:clamp(16px,2vw,20px);max-width:640px;">Answer every call. Qualify every
             lead. Book every appointment.<br>24 HOURS A DAY, 7 DAYS A WEEK.</p>
         <div class="hero-cta">
-            <a href="#demos" class="btn btn-primary">Try a Demo →</a>
-            <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+            <a href="#demos" id="hero-cta-primary" class="btn btn-primary">Try a Demo →</a>
+            <a href="#pricing" id="hero-cta-secondary" class="btn btn-secondary">View Pricing</a>
         </div>
     </section>
     <div class="stats">
@@ -696,14 +696,14 @@
     </div>
     <section class="pricing" id="pricing">
         <div class="section-header">
-            <h2>Simple Pricing</h2>
-            <p>Choose the plan that fits your needs</p>
+            <h2 id="pricing-heading">Simple Pricing</h2>
+            <p id="pricing-subheading">Choose the plan that fits your needs</p>
         </div>
         <div class="pricing-grid">
             <div class="pricing-card">
-                <div class="pricing-tier">Core</div>
-                <div class="pricing-price"><strong>$200</strong>/month • $15/hour over 8hrs</div>
-                <ul class="pricing-features">
+                <div id="pricing-core-name" class="pricing-tier">Core</div>
+                <div id="pricing-core-price" class="pricing-price"><strong>$200</strong>/month • $15/hour over 8hrs</div>
+                <ul id="pricing-core-features" class="pricing-features">
                     <li><span class="check">✓</span> No onboarding cost</li>
                     <li><span class="check">✓</span> 2 hours of hands-on onboarding</li>
                     <li><span class="check">✓</span> Basic support</li>
@@ -711,9 +711,9 @@
                 </ul>
             </div>
             <div class="pricing-card">
-                <div class="pricing-tier">Pro</div>
-                <div class="pricing-price"><strong>$500</strong>/month minimum • $15/hour over 20hrs</div>
-                <ul class="pricing-features">
+                <div id="pricing-pro-name" class="pricing-tier">Pro</div>
+                <div id="pricing-pro-price" class="pricing-price"><strong>$500</strong>/month minimum • $15/hour over 20hrs</div>
+                <ul id="pricing-pro-features" class="pricing-features">
                     <li><span class="check">✓</span> No onboarding cost</li>
                     <li><span class="check">✓</span> 5 hours hands-on human onboarding</li>
                     <li><span class="check">✓</span> Priority support</li>
@@ -721,9 +721,9 @@
                 </ul>
             </div>
             <div class="pricing-card">
-                <div class="pricing-tier">Elite</div>
-                <div class="pricing-price"><strong>$2,000</strong> setup • $500/mo • $15/hr over 20hrs</div>
-                <ul class="pricing-features">
+                <div id="pricing-elite-name" class="pricing-tier">Elite</div>
+                <div id="pricing-elite-price" class="pricing-price"><strong>$2,000</strong> setup • $500/mo • $15/hr over 20hrs</div>
+                <ul id="pricing-elite-features" class="pricing-features">
                     <li><span class="check">✓</span> Unlimited onboarding time</li>
                     <li><span class="check">✓</span> Knowledge base setup</li>
                     <li><span class="check">✓</span> Dedicated support</li>
@@ -832,15 +832,15 @@
 
     <section id="contact"
         style="position:relative;z-index:1;padding:80px 20px;text-align:center;background:rgba(255,255,255,0.02);">
-        <h2>Talk to Alice, our HoneyBadger AI Receptionist</h2>
-        <p style="color:var(--text-muted);margin:12px 0 40px;font-size:17px;">Get answers about our AI solutions, qualify your project, or schedule a demo call — instantly, 24/7.</p>
+        <h2 id="contact-headline">Talk to Alice, our HoneyBadger AI Receptionist</h2>
+        <p id="contact-subheadline" style="color:var(--text-muted);margin:12px 0 40px;font-size:17px;">Get answers about our AI solutions, qualify your project, or schedule a demo call — instantly, 24/7.</p>
         <div class="alice-card">
             <span class="alice-avatar">🎙️</span>
             <div class="alice-status">
                 <span class="alice-status-dot"></span>
                 Online · Available 24/7
             </div>
-            <h3>How Can Alice Help?</h3>
+            <h3 id="alice-card-title">How Can Alice Help?</h3>
             <div class="alice-actions">
                 <button onclick="startCall('alice')" id="btn-alice" class="btn btn-alice"
                     style="cursor:pointer;border:none;font-size:inherit;font-family:inherit;">
@@ -859,7 +859,7 @@
         </div>
     </section>
     <footer>
-        <p class="footer-text">© 2026 HoneyBadger AI. All rights reserved.</p>
+        <p id="footer-copyright" class="footer-text">© 2026 HoneyBadger AI. All rights reserved.</p>
     </footer>
 
     <!-- Retell Web Call SDK via CDN -->
@@ -947,6 +947,68 @@
             }
         }
     </script>
+    <!-- Content loader: fetches content.json and populates editable fields -->
+    <script>
+        (function () {
+            function set(id, text) {
+                var el = document.getElementById(id);
+                if (el && text != null) el.textContent = text;
+            }
+            function setHTML(id, html) {
+                var el = document.getElementById(id);
+                if (el && html != null) el.innerHTML = html;
+            }
+            function featureItems(list) {
+                if (!Array.isArray(list)) return '';
+                return list.map(function (f) {
+                    return '<li><span class="check">\u2713</span> ' + f + '</li>';
+                }).join('');
+            }
+
+            fetch('/content.json')
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (c) {
+                    if (!c) return;
+
+                    // Hero
+                    set('hero-title', c.hero && c.hero.title);
+                    set('hero-subtitle', c.hero && c.hero.subtitle);
+                    set('hero-cta-primary', c.hero && c.hero.cta_primary_text);
+                    set('hero-cta-secondary', c.hero && c.hero.cta_secondary_text);
+                    if (c.hero && c.hero.description) {
+                        setHTML('hero-description', c.hero.description.replace(/\n/g, '<br>'));
+                    }
+
+                    // Pricing section headings
+                    set('pricing-heading', c.pricing && c.pricing.heading);
+                    set('pricing-subheading', c.pricing && c.pricing.subheading);
+
+                    // Pricing tiers (Core, Pro, Elite)
+                    var keys = ['core', 'pro', 'elite'];
+                    var tiers = c.pricing && c.pricing.tiers;
+                    if (Array.isArray(tiers)) {
+                        tiers.forEach(function (tier, i) {
+                            var k = keys[i];
+                            if (!k) return;
+                            set('pricing-' + k + '-name', tier.name);
+                            setHTML('pricing-' + k + '-price',
+                                '<strong>' + tier.price + '</strong>' + tier.price_unit);
+                            setHTML('pricing-' + k + '-features', featureItems(tier.features));
+                        });
+                    }
+
+                    // Contact / Alice section
+                    set('contact-headline', c.contact && c.contact.headline);
+                    set('contact-subheadline', c.contact && c.contact.subheadline);
+                    set('alice-card-title', c.contact && c.contact.card_title);
+
+                    // Footer
+                    set('footer-copyright', c.footer && c.footer.copyright);
+                })
+                .catch(function () { /* silently keep static fallback content */ });
+        })();
+    </script>
+
     <!-- Cal floating-popup embed code begins -->
     <script type="text/javascript">
         (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
