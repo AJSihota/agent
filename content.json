@@ -8,7 +8,7 @@
   },
   "pricing": {
     "heading": "Simple Pricing",
-    "subheading": "Choose the plan that fits your needs",
+    "subheading": "Choose a plan that fits your needs",
     "tiers": [
       {
         "name": "Core",
@@ -53,7 +53,6 @@
     "phone": "877-677-0755"
   },
   "footer": {
-    "tagline": "Built in British Columbia 🇨🇦",
     "copyright": "© 2026 HoneyBadger AI. All rights reserved."
   }
 }
