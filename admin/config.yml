@@ -2,7 +2,7 @@ backend:
   name: github
   repo: AJSihota/agent
   branch: main
-  base_url: https://badgerlabs.ai
+  base_url: https://www.badgerlabs.ai
   auth_endpoint: /api/auth
 
 media_folder: uploads
