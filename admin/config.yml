@@ -1,0 +1,67 @@
+backend:
+  name: github
+  repo: AJSihota/agent
+  branch: main
+  base_url: https://badgerlabs.ai
+  auth_endpoint: /api/auth
+
+media_folder: uploads
+public_folder: /uploads
+
+collections:
+  - name: site
+    label: Site Content
+    files:
+      - name: content
+        label: Website Copy
+        file: content.json
+        format: json
+        fields:
+          - label: Hero Section
+            name: hero
+            widget: object
+            fields:
+              - { label: "Main Title (e.g. Alice)", name: title, widget: string }
+              - { label: "Subtitle / Tagline", name: subtitle, widget: string }
+              - label: "Description"
+                name: description
+                widget: text
+                hint: "Use a new line for line breaks."
+              - { label: "Primary Button Text", name: cta_primary_text, widget: string }
+              - { label: "Secondary Button Text", name: cta_secondary_text, widget: string }
+
+          - label: Pricing Section
+            name: pricing
+            widget: object
+            fields:
+              - { label: "Section Heading", name: heading, widget: string }
+              - { label: "Section Subheading", name: subheading, widget: string }
+              - label: Plans
+                name: tiers
+                widget: list
+                minimize_collapsed: true
+                fields:
+                  - { label: "Plan Name", name: name, widget: string }
+                  - { label: "Price (e.g. $200)", name: price, widget: string }
+                  - { label: "Price Description (e.g. /month • $15/hour over 8hrs)", name: price_unit, widget: string }
+                  - label: "Features"
+                    name: features
+                    widget: list
+                    minimize_collapsed: true
+                    field: { label: Feature, name: feature, widget: string }
+
+          - label: Contact / Alice Section
+            name: contact
+            widget: object
+            fields:
+              - { label: "Section Headline", name: headline, widget: string }
+              - { label: "Section Subheadline", name: subheadline, widget: string }
+              - { label: "Card Title (e.g. How Can Alice Help?)", name: card_title, widget: string }
+              - { label: "Contact Email", name: email, widget: string }
+              - { label: "Contact Phone", name: phone, widget: string }
+
+          - label: Footer
+            name: footer
+            widget: object
+            fields:
+              - { label: "Copyright Text", name: copyright, widget: string }
