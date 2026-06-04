@@ -31,14 +31,29 @@ module.exports = async function handler(req, res) {
 
 function renderPopup(status, content) {
   const message = `authorization:github:${status}:${content}`;
-  // Post directly to the opener and close — avoids depending on the
-  // two-step handshake which breaks when GitHub's COOP header nulls window.opener.
+  // GitHub's COOP header nulls window.opener during the OAuth redirect, so
+  // postMessage via opener is unreliable. BroadcastChannel works between
+  // same-origin windows without needing an opener reference. The admin page
+  // listens on the same channel and re-dispatches it as a window.postMessage
+  // that Decap CMS picks up through its normal message listener.
   return `<!DOCTYPE html><html><body><script>
     (function () {
       var msg = ${JSON.stringify(message)};
-      if (window.opener && !window.opener.closed) {
+      var sent = false;
+
+      // Primary: BroadcastChannel (same-origin, works despite COOP)
+      try {
+        var ch = new BroadcastChannel('decap-cms-oauth');
+        ch.postMessage(msg);
+        ch.close();
+        sent = true;
+      } catch (e) {}
+
+      // Fallback: window.opener for browsers without BroadcastChannel support
+      if (!sent && window.opener && !window.opener.closed) {
         window.opener.postMessage(msg, '*');
       }
+
       window.close();
     })();
   </script></body></html>`;
