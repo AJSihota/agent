@@ -668,7 +668,7 @@
             <img src="honeybadger-logo.png" alt="HoneyBadger AI"
                 style="height:40px;width:auto;background:#fff;padding:4px 8px;border-radius:8px;">
         </a>
-        <div class="nav-links"><a href="#pricing">Pricing</a><a href="#demos">Demos</a><a href="#contact">Contact</a>
+        <div class="nav-links"><a href="#pricing">Pricing</a><a href="#samples">Demos</a><a href="#contact">Contact</a>
         </div>
     </nav>
     <span id="top"></span>
@@ -680,7 +680,7 @@
         <p id="hero-description" class="hero-sub" style="font-size:clamp(16px,2vw,20px);max-width:640px;">Answer every call. Qualify every
             lead. Book every appointment.<br>24 HOURS A DAY, 7 DAYS A WEEK.</p>
         <div class="hero-cta">
-            <a href="#demos" id="hero-cta-primary" class="btn btn-primary">Try a Demo →</a>
+            <a href="#samples" id="hero-cta-primary" class="btn btn-primary">Try a Demo →</a>
             <a href="#pricing" id="hero-cta-secondary" class="btn btn-secondary">View Pricing</a>
         </div>
     </section>
@@ -732,99 +732,93 @@
             </div>
         </div>
     </section>
-    <section class="demos" id="demos">
-        <div class="section-header">
-            <h2>Try a Demo</h2>
-        </div>
-        <div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;max-width:900px;margin:0 auto;">
-            <div class="demo-card-large">
-                <div class="demo-icon-large">⚡</div>
-                <h3 style="font-size:28px;font-weight:700;margin-bottom:24px;">EV Charging</h3>
-                <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                    <button onclick="startCall('ev')" id="btn-ev" class="btn btn-primary"
-                        style="cursor:pointer;border:none;font-size:inherit;font-family:inherit;">🌐 Web</button>
-                    <a href="tel:877-836-0242" class="btn btn-secondary" style="text-decoration:none;"><svg
-                            class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true">
-                            <path
-                                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z" />
-                        </svg> Phone</a>
-                </div>
-            </div>
-            <div class="demo-card-large">
-                <div class="demo-icon-large">₿</div>
-                <h3 style="font-size:28px;font-weight:700;margin-bottom:24px;">Crypto ATMs</h3>
-                <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                    <button onclick="startCall('crypto')" id="btn-crypto" class="btn btn-primary"
-                        style="cursor:pointer;border:none;font-size:inherit;font-family:inherit;">🌐 Web</button>
-                    <a href="tel:778-800-3777" class="btn btn-secondary" style="text-decoration:none;"><svg
-                            class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true">
-                            <path
-                                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z" />
-                        </svg> Phone</a>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="samples" id="samples" style="position:relative;z-index:1;padding:80px 48px;">
         <div class="section-header">
-            <h2>Sample Calls in Your Industry</h2>
+            <h2>Try a demo</h2>
         </div>
         <div class="sample-grid">
             <div class="sample-card">
-                <div class="sample-icon">🦷</div>
-                <h3>Dental</h3>
-                <div style="margin-top:16px;">
-                    <audio controls style="width:100%;height:40px;border-radius:8px;" preload="metadata">
-                        <source src="dental-demo.mp4" type="audio/mp4">
-                        Your browser does not support audio playback.
-                    </audio>
-                    <p style="font-size:11px;color:var(--text-muted);margin-top:8px;">Sample demo call</p>
+                <div class="sample-icon">⚡</div>
+                <h3>EV Charging</h3>
+                <div style="margin-top:16px; display:flex; gap:12px; align-items:center;">
+                    <button onclick="startCall('ev')" id="btn-ev" class="btn btn-primary"
+                        style="cursor:pointer;border:none;font-family:inherit;">🌐 Web</button>
+                    <a href="tel:236-200-5534" class="btn btn-primary" style="text-decoration:none;"><svg
+                            class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z" />
+                        </svg> Phone</a>
                 </div>
             </div>
             <div class="sample-card">
-                <div class="sample-icon">⚖️</div>
-                <h3>Legal</h3>
-                <div style="margin-top:16px;">
-                    <audio controls style="width:100%;height:40px;border-radius:8px;" preload="metadata">
-                        <source src="legal-demo.mp4" type="audio/mp4">
-                        Your browser does not support audio playback.
-                    </audio>
-                    <p style="font-size:11px;color:var(--text-muted);margin-top:8px;">Sample demo call</p>
+                <div class="sample-icon">₿</div>
+                <h3>Crypto ATMs</h3>
+                <div style="margin-top:16px; display:flex; gap:12px; align-items:center;">
+                    <button onclick="startCall('crypto')" id="btn-crypto" class="btn btn-primary"
+                        style="cursor:pointer;border:none;font-family:inherit;">🌐 Web</button>
+                    <a href="tel:778-655-7950" class="btn btn-primary" style="text-decoration:none;"><svg
+                            class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z" />
+                        </svg> Phone</a>
                 </div>
             </div>
             <div class="sample-card">
-                <div class="sample-icon">❄️</div>
-                <h3>HVAC</h3>
-                <div style="margin-top:16px;">
-                    <audio controls style="width:100%;height:40px;border-radius:8px;" preload="metadata">
-                        <source src="hvac-demo.mp4" type="audio/mp4">
-                        Your browser does not support audio playback.
-                    </audio>
-                    <p style="font-size:11px;color:var(--text-muted);margin-top:8px;">Sample demo call</p>
+                <div class="sample-icon">🍽️</div>
+                <h3>Fine Dining</h3>
+                <div style="margin-top:16px; display:flex; gap:12px; align-items:center;">
+                    <button onclick="startCall('dining')" id="btn-dining" class="btn btn-primary"
+                        style="cursor:pointer;border:none;font-family:inherit;">🌐 Web</button>
+                    <a href="tel:236-304-1625" class="btn btn-primary" style="text-decoration:none;"><svg
+                            class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z" />
+                        </svg> Phone</a>
                 </div>
             </div>
             <div class="sample-card">
                 <div class="sample-icon">🚗</div>
-                <h3>Automotive</h3>
-                <div style="margin-top:16px;">
-                    <audio controls style="width:100%;height:40px;border-radius:8px;" preload="metadata">
-                        <source src="automotive-demo.mp4" type="audio/mp4">
-                        Your browser does not support audio playback.
-                    </audio>
-                    <p style="font-size:11px;color:var(--text-muted);margin-top:8px;">Sample demo call</p>
+                <h3>Parking Services</h3>
+                <div style="margin-top:16px; display:flex; gap:12px; align-items:center;">
+                    <button onclick="startCall('parking')" id="btn-parking" class="btn btn-primary"
+                        style="cursor:pointer;border:none;font-family:inherit;">🌐 Web</button>
+                    <a href="tel:236-304-4075" class="btn btn-primary" style="text-decoration:none;"><svg
+                            class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z" />
+                        </svg> Phone</a>
                 </div>
             </div>
             <div class="sample-card">
-                <div class="sample-icon">🔧</div>
-                <h3>Plumbing</h3>
-                <div style="margin-top:16px;">
-                    <audio controls style="width:100%;height:40px;border-radius:8px;" preload="metadata">
-                        <source src="plumbing-demo.mp4" type="audio/mp4">
-                        Your browser does not support audio playback.
-                    </audio>
-                    <p style="font-size:11px;color:var(--text-muted);margin-top:8px;">Sample demo call</p>
+                <div class="sample-icon">🏠</div>
+                <h3>Property Management</h3>
+                <div style="margin-top:16px; display:flex; gap:12px; align-items:center;">
+                    <button onclick="startCall('property')" id="btn-property" class="btn btn-primary"
+                        style="cursor:pointer;border:none;font-family:inherit;">🌐 Web</button>
+                    <a href="tel:778-200-9478" class="btn btn-primary" style="text-decoration:none;"><svg
+                            class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z" />
+                        </svg> Phone</a>
+                </div>
+            </div>
+            <div class="sample-card">
+                <div class="sample-icon">✈️</div>
+                <h3>Air Travel</h3>
+                <div style="margin-top:16px; display:flex; gap:12px; align-items:center;">
+                    <button onclick="startCall('airtravel')" id="btn-airtravel" class="btn btn-primary"
+                        style="cursor:pointer;border:none;font-family:inherit;">🌐 Web</button>
+                    <a href="tel:825-773-0747" class="btn btn-primary" style="text-decoration:none;"><svg
+                            class="icon-phone" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.4.6 3.66.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.5.6 3.66a1 1 0 0 1-.24 1.05l-2.24 2.08z" />
+                        </svg> Phone</a>
                 </div>
             </div>
         </div>
@@ -931,7 +925,7 @@
         };
 
         function resetButtons() {
-            ["ev", "crypto"].forEach((demo) => {
+            ["ev", "crypto", "dining", "parking", "property", "airtravel"].forEach((demo) => {
                 const btn = document.getElementById("btn-" + demo);
                 if (btn) {
                     btn.textContent = "🌐 Web";
