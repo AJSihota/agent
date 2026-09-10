@@ -1,5 +1,8 @@
 {
   "name": "badgerlabs-ai",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "vercel": "^59.15.1"
+  }
 }
