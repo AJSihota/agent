@@ -8,7 +8,7 @@
   },
   "pricing": {
     "heading": "Simple Pricing",
-    "subheading": "Choose the plan that fits your needs",
+    "subheading": "One plan to fit all your needs.",
     "tiers": [
       {
         "name": "Core",
@@ -33,9 +33,9 @@
         ]
       },
       {
-        "name": "Elite",
+        "name": "All-Inclusive",
         "price": "$2,000",
-        "price_unit": " setup • $500/mo • $15/hr over 20hrs",
+        "price_unit": "/month • $15/hour over 20hrs",
         "features": [
           "Unlimited onboarding time",
           "Knowledge base setup",

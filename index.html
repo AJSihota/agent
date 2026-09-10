@@ -352,6 +352,16 @@
             transition: all 0.3s;
         }
 
+        .pricing-card-single {
+            max-width: 420px;
+            width: 100%;
+            justify-self: center;
+        }
+
+        .pricing-card-single .pricing-tier {
+            text-align: center;
+        }
+
         .pricing-card:hover {
             border-color: #fff;
             transform: translateY(-4px);
@@ -753,10 +763,10 @@
     <section class="pricing" id="pricing">
         <div class="section-header">
             <h2 id="pricing-heading">Simple Pricing</h2>
-            <p id="pricing-subheading">Choose the plan that fits your needs</p>
+            <p id="pricing-subheading">One plan to fit all your needs.</p>
         </div>
         <div class="pricing-grid">
-            <div class="pricing-card">
+            <div class="pricing-card" hidden>
                 <div id="pricing-core-name" class="pricing-tier">Core</div>
                 <div id="pricing-core-price" class="pricing-price"><strong>$200</strong>/month • $15/hour over 8hrs</div>
                 <ul id="pricing-core-features" class="pricing-features">
@@ -766,7 +776,7 @@
                     <li><span class="check">✓</span> 8 hours included monthly</li>
                 </ul>
             </div>
-            <div class="pricing-card">
+            <div class="pricing-card" hidden>
                 <div id="pricing-pro-name" class="pricing-tier">Pro</div>
                 <div id="pricing-pro-price" class="pricing-price"><strong>$500</strong>/month minimum • $15/hour over 20hrs</div>
                 <ul id="pricing-pro-features" class="pricing-features">
@@ -776,9 +786,9 @@
                     <li><span class="check">✓</span> 20 hours included monthly</li>
                 </ul>
             </div>
-            <div class="pricing-card">
-                <div id="pricing-elite-name" class="pricing-tier">Elite</div>
-                <div id="pricing-elite-price" class="pricing-price"><strong>$2,000</strong> setup • $500/mo • $15/hr over 20hrs</div>
+            <div class="pricing-card pricing-card-single">
+                <div id="pricing-elite-name" class="pricing-tier">All-Inclusive</div>
+                <div id="pricing-elite-price" class="pricing-price"><strong>$2,000</strong>/month • $15/hour over 20hrs</div>
                 <ul id="pricing-elite-features" class="pricing-features">
                     <li><span class="check">✓</span> Unlimited onboarding time</li>
                     <li><span class="check">✓</span> Knowledge base setup</li>
