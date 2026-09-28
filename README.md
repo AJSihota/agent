@@ -18,6 +18,19 @@ BadgerLabs AI is an AI voice agent platform targeting service businesses in Brit
 
 ### Vercel (Recommended)
 
+Secrets are never committed. Set them in Vercel → Project → Settings → Environment Variables (tick Production and Preview), then redeploy — changes only apply to new deployments.
+
+| Variable | Used by |
+|---|---|
+| `RETELL_API_KEY_DEMOS` | `/api/create-call`: ev, crypto, dining, parking, property, airtravel |
+| `RETELL_API_KEY_HVAC` | `/api/create-call`: hvac · `/api/create-call-embed`: ev |
+| `RETELL_API_KEY_ALICE` | `/api/create-call`: alice · `/api/create-call-embed`: crypto |
+| `RETELL_API_KEY_HVAC_EMBED` | `/api/create-call-embed`: hvac |
+| `ADMIN_PASSWORD` | `/admin` sign-in |
+| `GITHUB_TOKEN` | `/admin` publishing (commits `content.json`) |
+
+Each Retell key must belong to the Retell workspace that owns the agents listed next to it.
+
 ```bash
 cd /data/.openclaw/workspace/badgerlabs-ai
 vercel --prod
