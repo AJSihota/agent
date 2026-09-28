@@ -13,12 +13,15 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
   const AGENTS = {
-    ev: { agentId: 'agent_4c3c77a23da1f82720dd7b964a', apiKey: 'key_55d4df3050d36c800ece6499a2ba' },
-    crypto: { agentId: 'agent_56ccac9d6a6ae0b6ed92c0ffe1', apiKey: 'key_c5bb6259da114f3f7d5665a0768b' },
-    hvac: { agentId: 'agent_5bfd40867f73fb1c2337c01185', apiKey: 'key_b0daa84fdd89fd57a8b3a2d62722' },
+    ev: { agentId: 'agent_4c3c77a23da1f82720dd7b964a', apiKey: process.env.RETELL_API_KEY_HVAC },
+    crypto: { agentId: 'agent_56ccac9d6a6ae0b6ed92c0ffe1', apiKey: process.env.RETELL_API_KEY_ALICE },
+    hvac: { agentId: 'agent_5bfd40867f73fb1c2337c01185', apiKey: process.env.RETELL_API_KEY_HVAC_EMBED },
   };
   const demo = (req.body && req.body.demo) || 'hvac';
   const config = AGENTS[demo] || AGENTS.hvac;
+  if (!config.apiKey) {
+    return res.status(500).json({ error: 'Retell API key not configured for demo "' + demo + '"' });
+  }
   try {
     const response = await fetch('https://api.retellai.com/v2/create-web-call', {
       method: 'POST',
